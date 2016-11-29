@@ -7,7 +7,6 @@ import java.util.Calendar;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
 import org.springframework.web.bind.WebDataBinder;
@@ -16,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestController;
 
 import br.com.constantino.androidviagem.dao.CategoriaDAO;
 import br.com.constantino.androidviagem.dao.GastoDAO;
@@ -23,7 +23,7 @@ import br.com.constantino.androidviagem.entities.Categoria;
 import br.com.constantino.androidviagem.entities.Gasto;
 import br.com.constantino.androidviagem.validator.GastoValidator;
 
-@Controller
+@RestController
 public class GastoController {
 
 	@Autowired
@@ -51,24 +51,20 @@ public class GastoController {
 	}
 	
 	@RequestMapping(value = "/gasto/incluir", method=RequestMethod.POST)
-	@ResponseBody
 	public String incluir(
 							@RequestParam(value="local") String local,
 							@Valid Gasto gasto, 
 							BindingResult bindingResult
 						) {
 		
-		
 		if (bindingResult.hasErrors()) {
 			return "Houve um erro ";			
 		}
 		
-		
-		return gasto.getLocal() + " Esse Ã© o local";
+		return gasto.getLocal() + " Esse é o local";
 	}
 
 	@RequestMapping(value = "/gasto/inserir", method=RequestMethod.POST)
-	@ResponseBody
 	public String inserir(
 			@Valid Gasto gasto,
 			BindingResult result,

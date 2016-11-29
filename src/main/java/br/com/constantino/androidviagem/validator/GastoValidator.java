@@ -20,16 +20,16 @@ public class GastoValidator implements Validator {
 			
 			Gasto gasto = (Gasto) object;
 			
-			System.out.println(gasto.getCategoria());
+//			System.out.println(gasto.getCategoria().getId());
 			
-			if (gasto.getCategoria() == null)
-				e.rejectValue("categoria_id","nullCategoria", "Por favor, informe a categoria.");
+//			if (gasto.getCategoria() == null)
+//				e.rejectValue("categoria_id", "nullCategoria", "Por favor, informe a categoria.");
 			
 			if (gasto.getDescricao().length() < 3 || gasto.getDescricao().length() > 50) 
-				e.rejectValue("descricao", "rangeDescricao", "NÃºmero de caracteres da descriÃ§Ã£o deve estar entre 3 e 50.");
+				e.rejectValue("descricao", "rangeDescricao", "Número de caracteres da descrição deve estar entre 3 e 50.");
 			
 			if (gasto.getLocal().length() < 3 || gasto.getLocal().length() > 50)
-				e.rejectValue("local", "rangeLocal", "NÃºmero de caracteres do local deve estar entre 3 e 50.");
+				e.rejectValue("local", "rangeLocal", "Número de caracteres do local deve estar entre 3 e 50.");
 			
 			
 		} catch(NullPointerException ex) {
@@ -39,10 +39,14 @@ public class GastoValidator implements Validator {
 
 	public void validate(Object object, Errors e) {
 		
+		Gasto gasto = (Gasto) object;
+		System.out.println("Teste");
+		System.out.println(gasto.getCategoria().getId());
+		
 //		ValidationUtils.rejectIfEmpty(error, "categoria_id", "categoriaEmpty", "Por favor, escolha uma categoria.");
 		ValidationUtils.rejectIfEmpty(e,"valor", "valorEmpty", "Por favor, informe o valor.");
 		ValidationUtils.rejectIfEmpty(e, "data", "dataEmpty", "Por favor, informe a data.");
-		ValidationUtils.rejectIfEmpty(e, "descricao", "descricaoEmpty", "Por favor, informe a descriÃ§Ã£o.");
+		ValidationUtils.rejectIfEmpty(e, "descricao", "descricaoEmpty", "Por favor, informe a descrição.");
 		ValidationUtils.rejectIfEmpty(e, "local", "localEmpty", "Por favor, informe o local.");
 		
 		this.othersValidate(object, e);

@@ -46,6 +46,7 @@ public class Gasto {
 	})
 	@JsonIgnore
 	private Categoria categoria;
+	
 
 	public Integer getId() {
 		return id;
@@ -98,7 +99,5 @@ public class Gasto {
 	@Override
 	public String toString() {
 		return "Data " + getData() + " = Descricao " + getDescricao();
-	}
-	
-	
+	}		
 }
