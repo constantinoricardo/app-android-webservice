@@ -98,6 +98,6 @@ public class Gasto {
 	
 	@Override
 	public String toString() {
-		return "Data " + getData() + " = Descricao " + getDescricao();
+		return "{ Data :" + getData() + ", Descricao :" + getDescricao() + ", Categoria : " + getCategoria().getId() + "}";
 	}		
 }

@@ -61,7 +61,12 @@ public class GastoController {
 			return "Houve um erro ";			
 		}
 		
-		return gasto.getLocal() + " Esse é o local";
+		return gasto.getLocal() + " Esse ï¿½ o local";
+	}
+	
+	@RequestMapping(value="/gasto/ricardo", method=RequestMethod.POST)
+	public String ricardo(@RequestParam(value="nome") String nome) {
+		return nome + " Teste";
 	}
 
 	@RequestMapping(value = "/gasto/inserir", method=RequestMethod.POST)
@@ -70,7 +75,7 @@ public class GastoController {
 			BindingResult result,
 			@RequestParam(value = "categoria_id") Integer categoria_id,
 			@RequestParam(value = "data") String data
-			) {
+			) {					
 		
 		try {
 			
