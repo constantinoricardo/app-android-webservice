@@ -7,6 +7,6 @@ import org.springframework.data.repository.CrudRepository;
 import br.com.constantino.androidviagem.entities.Gasto;
 
 @Transactional
-public interface GastoDAO extends CrudRepository<Gasto, Integer> {
+public interface GastoDAO extends CrudRepository<Gasto, Long> {
 
 }
