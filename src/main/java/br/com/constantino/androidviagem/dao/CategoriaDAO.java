@@ -15,7 +15,4 @@ public interface CategoriaDAO extends CrudRepository<Categoria, Long> {
 	@Query("select c from Categoria c")
 	public List<Categoria> findCategoryAll();
 	
-	@Query("select c from Categoria c where c.id = ?")
-	public Categoria findCategoryById(Integer id);
-	
 }
