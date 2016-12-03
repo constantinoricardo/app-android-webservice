@@ -12,6 +12,8 @@ import javax.persistence.JoinColumns;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
@@ -26,9 +28,11 @@ public class Viagem {
 	@Column(name="destino")
 	private String destino;
 	
+	@DateTimeFormat(pattern="dd/MM/yyyy")
 	@Column(name="data_chegada")
 	private Calendar data_chegada;
 	
+	@DateTimeFormat(pattern="dd/MM/yyyy")
 	@Column(name="data_saida")
 	private Calendar data_saida;
 	
