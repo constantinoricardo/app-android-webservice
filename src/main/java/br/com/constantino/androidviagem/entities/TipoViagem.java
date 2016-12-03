@@ -10,6 +10,8 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 @Table(name="tipoviagem")
 public class TipoViagem {
@@ -41,6 +43,7 @@ public class TipoViagem {
 		this.descricao = descricao;
 	}
 
+	@JsonIgnore
 	public List<Viagem> getViagem() {
 		return viagem;
 	}

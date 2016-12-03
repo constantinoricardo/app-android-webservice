@@ -12,6 +12,8 @@ import javax.persistence.JoinColumns;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 @Table(name="viagem")
 public class Viagem {
@@ -40,6 +42,7 @@ public class Viagem {
 	@JoinColumns({
 		@JoinColumn(name="id_tipoviagem", referencedColumnName="id")
 	})
+	@JsonIgnore
 	private TipoViagem tipoviagem;
 	
 	

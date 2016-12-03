@@ -34,12 +34,10 @@ public class GastoValidator implements Validator {
 
 	public void validate(Object object, Errors e) {					
 		
-		Gasto gasto = (Gasto) object;	
-		
 		ValidationUtils.rejectIfEmpty(e, "categoria", "categoriaEmpty", "Por favor, informe a categoria.");
 		ValidationUtils.rejectIfEmpty(e,"valor", "valorEmpty", "Por favor, informe o valor.");
 		ValidationUtils.rejectIfEmpty(e, "data", "dataEmpty", "Por favor, informe a data.");
-		ValidationUtils.rejectIfEmpty(e, "descricao", "descricaoEmpty", "Por favor, informe a descri��o.");
+		ValidationUtils.rejectIfEmpty(e, "descricao", "descricaoEmpty", "Por favor, informe a descrição.");
 		ValidationUtils.rejectIfEmpty(e, "local", "localEmpty", "Por favor, informe o local.");
 		
 		this.othersValidate(object, e);				      
