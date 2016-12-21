@@ -2,6 +2,7 @@ package br.com.constantino.androidviagem.controller;
 
 import javax.validation.Valid;
 
+import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
@@ -79,20 +80,28 @@ public class GastoController {
 		return "Gasto removido com sucesso.";
 	}
 
-	@RequestMapping(value = "/gasto/inserir", method=RequestMethod.POST)
-	public String inserir(@Valid Gasto gasto, BindingResult result) {					
+	@RequestMapping(value = "/gasto/inserir", method=RequestMethod.POST)	
+	public String inserir(@Valid Gasto gasto, BindingResult result) {
+		JSONObject resposta = new JSONObject();		
+		
 		try {
 			if (result.hasErrors()) {
-				FieldError field = result.getFieldError();
-				return field.getDefaultMessage();
+				FieldError field = result.getFieldError();				
+				resposta.append("codigo", 0);
+				resposta.append("mensagem", field.getDefaultMessage());
+				return resposta.toString();
 			}
 			
 			gastoDAO.save(gasto);
 
-		} catch (Exception ex) {
-			return "Erro ao gravar Gasto " + ex.getMessage();
+		} catch (Exception ex) {			
+			resposta.append("codigo", 0);
+			resposta.append("mensagem", "Erro ao gravar Gasto " + ex.getMessage());
+			return resposta.toString();
 		}
-		
-		return "Gasto inserido com sucesso.";
+				
+		resposta.append("codigo", 1);
+		resposta.append("mensagem", "Gasto inserido com sucesso.");
+		return resposta.toString();		
 	}
 }
